@@ -1,4 +1,4 @@
-import redis 
+from redis import Redis
 
 class RedisConnector(object):
 
@@ -11,11 +11,21 @@ class RedisConnector(object):
         self.userName = userName
         self.password = password
 
-    def __connect__(self):pass
+        self.conn = None
+
+    def __connect__(self):
+        return Redis(
+            host= self.hostName,
+            port = self.port,
+            db = self.dbName,
+            password = self.password,
+
+        )
 
     def __disconnect__(self)->None:pass 
 
-    def __create_connection__(self)->None:pass
+    def __create_connection__(self):
+        self.conn = self.__connect__()
 
 
 
