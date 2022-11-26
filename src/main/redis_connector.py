@@ -8,7 +8,6 @@ class RedisConnector(object):
         self.hostName = hostName
         self.port = port 
         self.dbName = dbName
-        self.userName = userName
         self.password = password
 
         self.rdConn = None
