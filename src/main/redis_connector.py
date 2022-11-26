@@ -11,7 +11,7 @@ class RedisConnector(object):
         self.userName = userName
         self.password = password
 
-        self.conn = None
+        self.rdConn = None
 
     def __connect__(self):
         return Redis(
@@ -22,10 +22,11 @@ class RedisConnector(object):
 
         )
 
-    def __disconnect__(self)->None:pass 
+    def __disconnect__(self)->None:
+        self.rdConn.close()
 
     def __create_connection__(self):
-        self.conn = self.__connect__()
+        self.rdConn = self.__connect__()
 
 
 
